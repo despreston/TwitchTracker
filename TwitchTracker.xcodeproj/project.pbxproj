@@ -12,6 +12,11 @@
 		48866ECC23A95C8000AAD4F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48866ECB23A95C8000AAD4F1 /* Assets.xcassets */; };
 		48866ECF23A95C8000AAD4F1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48866ECE23A95C8000AAD4F1 /* Preview Assets.xcassets */; };
 		48866ED223A95C8000AAD4F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48866ED023A95C8000AAD4F1 /* Main.storyboard */; };
+		48866EDF23ABEAE300AAD4F1 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48866EDE23ABEAE300AAD4F1 /* StatusBarController.swift */; };
+		48866EE123ABEB6700AAD4F1 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48866EE023ABEB6700AAD4F1 /* EventMonitor.swift */; };
+		48866EE523ABED6E00AAD4F1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48866EE423ABED6E00AAD4F1 /* MainViewController.swift */; };
+		48DEDFEC23AC0F1300BE574B /* TwitchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DEDFEB23AC0F1300BE574B /* TwitchRequest.swift */; };
+		48DEDFF023AC253900BE574B /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DEDFEF23AC253900BE574B /* BaseRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +28,12 @@
 		48866ED123A95C8000AAD4F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		48866ED323A95C8000AAD4F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48866ED423A95C8000AAD4F1 /* TwitchTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TwitchTracker.entitlements; sourceTree = "<group>"; };
+		48866EDE23ABEAE300AAD4F1 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
+		48866EE023ABEB6700AAD4F1 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
+		48866EE423ABED6E00AAD4F1 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		48D1DE8523AC02B500C6FE8D /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		48DEDFEB23AC0F1300BE574B /* TwitchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitchRequest.swift; sourceTree = "<group>"; };
+		48DEDFEF23AC253900BE574B /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +66,8 @@
 		48866EC623A95C7E00AAD4F1 /* TwitchTracker */ = {
 			isa = PBXGroup;
 			children = (
+				48DEDFEA23AC0E3B00BE574B /* Utils */,
+				48D1DE8423AC021700C6FE8D /* Controllers */,
 				48866EC723A95C7E00AAD4F1 /* AppDelegate.swift */,
 				48866EC923A95C7E00AAD4F1 /* ContentView.swift */,
 				48866ECB23A95C8000AAD4F1 /* Assets.xcassets */,
@@ -62,6 +75,8 @@
 				48866ED323A95C8000AAD4F1 /* Info.plist */,
 				48866ED423A95C8000AAD4F1 /* TwitchTracker.entitlements */,
 				48866ECD23A95C8000AAD4F1 /* Preview Content */,
+				48866EE023ABEB6700AAD4F1 /* EventMonitor.swift */,
+				48D1DE8523AC02B500C6FE8D /* Config.xcconfig */,
 			);
 			path = TwitchTracker;
 			sourceTree = "<group>";
@@ -72,6 +87,24 @@
 				48866ECE23A95C8000AAD4F1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		48D1DE8423AC021700C6FE8D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				48866EE423ABED6E00AAD4F1 /* MainViewController.swift */,
+				48866EDE23ABEAE300AAD4F1 /* StatusBarController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		48DEDFEA23AC0E3B00BE574B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				48DEDFEB23AC0F1300BE574B /* TwitchRequest.swift */,
+				48DEDFEF23AC253900BE574B /* BaseRequest.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,8 +178,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48866EDF23ABEAE300AAD4F1 /* StatusBarController.swift in Sources */,
 				48866ECA23A95C7E00AAD4F1 /* ContentView.swift in Sources */,
 				48866EC823A95C7E00AAD4F1 /* AppDelegate.swift in Sources */,
+				48DEDFF023AC253900BE574B /* BaseRequest.swift in Sources */,
+				48866EE123ABEB6700AAD4F1 /* EventMonitor.swift in Sources */,
+				48DEDFEC23AC0F1300BE574B /* TwitchRequest.swift in Sources */,
+				48866EE523ABED6E00AAD4F1 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +204,7 @@
 /* Begin XCBuildConfiguration section */
 		48866ED523A95C8000AAD4F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48D1DE8523AC02B500C6FE8D /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -226,6 +265,7 @@
 		};
 		48866ED623A95C8000AAD4F1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48D1DE8523AC02B500C6FE8D /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;

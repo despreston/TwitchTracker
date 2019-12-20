@@ -1,0 +1,14 @@
+//
+//  Config.xcconfig
+//  TwitchTracker
+//
+//  Created by dpreston on 12/19/19.
+//  Copyright © 2019 dpreston. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+TWITCH_CLIENT_ID = dr354rjm9tq8zayf4ccoyj8kdbwrn3
+TWITCH_BASE_URL = https://api.twitch.tv/helix/
+
