@@ -14,12 +14,12 @@ struct BaseRequest {
   private let session: URLSession
   
   var url: URL
-  var callback: (_ error: Any?, _ data: [String: Any]) -> Void
+  var callback: (_ error: Error?, _ data: Data?) -> Void
   
   @discardableResult
   init(
     url: String,
-    callback: @escaping(_ error: Any?, _ data: [String: Any]) -> Void
+    callback: @escaping(_ error: Error?, _ data: Data?) -> Void
   ) {
     self.url = URL(string: url)!
     self.config = URLSessionConfiguration.default
@@ -36,24 +36,19 @@ struct BaseRequest {
   
   private func doRequest() {
     self.session.dataTask(with: self.url) { data, response, error in
-      guard let data = data, error == nil else {
-        self.callback(error, [:])
+      if (error != nil) {
+        self.callback(error, data)
         return
       }
 
       guard let httpResponse = response as? HTTPURLResponse,
         (200...299).contains(httpResponse.statusCode) else {
-          self.callback(error, [:])
+          self.callback(error, data)
           return
       }
       
-      do {
-        if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-          self.callback(nil, json)
-        }
-      } catch {
-        print("JSON error: \(error.localizedDescription)")
-      }
+      self.callback(error, data)
+      return
     }.resume()
   }
 }

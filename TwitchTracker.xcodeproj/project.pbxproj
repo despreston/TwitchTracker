@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,7 @@
 		48866EE523ABED6E00AAD4F1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48866EE423ABED6E00AAD4F1 /* MainViewController.swift */; };
 		48DEDFEC23AC0F1300BE574B /* TwitchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DEDFEB23AC0F1300BE574B /* TwitchRequest.swift */; };
 		48DEDFF023AC253900BE574B /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DEDFEF23AC253900BE574B /* BaseRequest.swift */; };
+		48DEDFF523AD668000BE574B /* Promises in Frameworks */ = {isa = PBXBuildFile; productRef = 48DEDFF423AD668000BE574B /* Promises */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48DEDFF523AD668000BE574B /* Promises in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +125,9 @@
 			dependencies = (
 			);
 			name = TwitchTracker;
+			packageProductDependencies = (
+				48DEDFF423AD668000BE574B /* Promises */,
+			);
 			productName = TwitchTracker;
 			productReference = 48866EC423A95C7E00AAD4F1 /* TwitchTracker.app */;
 			productType = "com.apple.product-type.application";
@@ -151,6 +156,9 @@
 				Base,
 			);
 			mainGroup = 48866EBB23A95C7E00AAD4F1;
+			packageReferences = (
+				48DEDFF323AD668000BE574B /* XCRemoteSwiftPackageReference "promises" */,
+			);
 			productRefGroup = 48866EC523A95C7E00AAD4F1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -385,6 +393,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		48DEDFF323AD668000BE574B /* XCRemoteSwiftPackageReference "promises" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/promises.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.8;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		48DEDFF423AD668000BE574B /* Promises */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48DEDFF323AD668000BE574B /* XCRemoteSwiftPackageReference "promises" */;
+			productName = Promises;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 48866EBC23A95C7E00AAD4F1 /* Project object */;
 }
