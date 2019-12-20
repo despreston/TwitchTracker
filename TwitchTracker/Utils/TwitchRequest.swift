@@ -6,6 +6,7 @@
 //  Copyright © 2019 dpreston. All rights reserved.
 //
 import Foundation
+import Promises
 
 struct TwitchUser:Codable {
   var broadcaster_type: String
@@ -32,59 +33,50 @@ class TwitchRequest {
   private static let CLIENT_ID: String = "dr354rjm9tq8zayf4ccoyj8kdbwrn3"
   private static let BASE_URL: String = "https://api.twitch.tv/helix/"
   
-  public static func user(
-    login: String,
-    callback: @escaping(_ error: Error?, _ data: TwitchUser?) -> Void
-  ) -> Void {
+  public static func user(login: String) -> Promise<TwitchUser> {
     print("Fetching user \(login)")
     
-    BaseRequest(url: "\(BASE_URL)users?login=\(login)") { error, data in
-      guard let dataResponse = data, error == nil else {
-        callback(TwitchRequestError.Unknown, nil)
-        return
-      }
-
-      do {
-        let twitchResponse = try JSONDecoder().decode(
-          TwitchResponse.self,
-          from: dataResponse
-        )
-        
-        if twitchResponse.data.isEmpty {
-          callback(TwitchRequestError.UserNotFound, nil)
-        } else {
-          callback(nil, twitchResponse.data[0])
+    return BaseRequest(url: "\(BASE_URL)users?login=\(login)").doRequest()
+      .then { dataResponse in
+        return Promise<TwitchUser> { fulfill, reject in
+          do {
+            let twitchResponse = try JSONDecoder().decode(
+              TwitchResponse.self,
+              from: dataResponse
+            )
+    
+            if twitchResponse.data.isEmpty {
+              return reject(TwitchRequestError.UserNotFound)
+            } else {
+              return fulfill(twitchResponse.data[0])
+            }
+          } catch {
+            return reject(TwitchRequestError.Unknown)
+          }
         }
-      } catch {
-        callback(TwitchRequestError.Unknown, nil)
-      }
     }
   }
   
-  public static func followers(
-    id: String,
-    callback: @escaping(_ error: Error?, _ data: Int) -> Void
-  ) -> Void {
+  public static func followers(id: String) -> Promise<Int> {
     print("Fetching follower count for \(id)")
     
-    BaseRequest(url: "\(BASE_URL)users/follows?to_id=\(id)") { error, data in
-      guard let dataResponse = data, error == nil else {
-        callback(TwitchRequestError.Unknown, 0)
-        return
-      }
-      
-      do {
-        let json = try JSONSerialization.jsonObject(
-          with: dataResponse,
-          options: []
-        )
-        
-        guard let shit = json as? [String: Any] else { return }
-        guard let total = shit["total"] as? Int else { return }
-        callback(nil, total)
-      } catch {
-        callback(TwitchRequestError.Unknown, 0)
-      }
+    return BaseRequest(url: "\(BASE_URL)users/follows?to_id=\(id)").doRequest()
+      .then { dataResponse in
+        return Promise<Int> { fulfill, reject in
+          do {
+            let json = try JSONSerialization.jsonObject(
+              with: dataResponse,
+              options: []
+            )
+            
+            guard let shit = json as? [String: Any] else { return }
+            guard let total = shit["total"] as? Int else { return }
+
+            return fulfill(total)
+          } catch {
+            return reject(TwitchRequestError.Unknown)
+          }
+        }
     }
   }
 }

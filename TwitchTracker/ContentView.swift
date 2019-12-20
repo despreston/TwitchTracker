@@ -13,45 +13,45 @@ import Promises
 struct ContentView: View {
   //nykx1
   @State private var name: String = ""
-  @State private var image: String = ""
+  @State private var user: TwitchUser?
   @State private var loading: Bool = false
-  @State private var error: Error? = nil
+  @State private var error: String = ""
   @State private var followers: Int = 0
-  @State private var id: String = ""
   
   private func onChangeUser() -> Void {
     self.loading = true
     
-    TwitchRequest.user(login: self.name) { error, user in
-      if (error != nil) {
-        self.error = error
-        return
-      }
-      
-      self.id = user?.id ?? ""
-      self.image = user?.profile_image_url ?? ""
-      
-      TwitchRequest.followers(id: self.id) { error, total in
-        if (error != nil) {
-          self.error = error
-          return
+    TwitchRequest.user(login: self.name).then { user in
+      self.user = user
+      return Promise { user.id }
+    }.then { id in
+      return TwitchRequest.followers(id: id)
+    }.then { followers in
+      self.followers = followers
+    }.catch { error in
+      self.error = {
+        switch error {
+        case TwitchRequestError.UserNotFound:
+          return "Unknown user."
+        default:
+          return "Something went wrong."
         }
-        
-        self.followers = total
-      }
+      }()
+    }.always {
+      self.loading = false
     }
   }
   
   var body: some View {
     VStack(alignment: .leading, spacing: 0) {
-      if self.name != "" {
+      if self.user?.login != "" {
         Text("Follower count for \(name): \(followers)")
           .font(.subheadline)
           .fontWeight(.semibold)
           .padding(.horizontal, 16.0)
           .padding(.vertical, 12.0)
       }
-      if self.error != nil {
+      if self.error != "" {
         Text(self.error)
           .font(.subheadline)
           .fontWeight(.semibold)
@@ -65,7 +65,7 @@ struct ContentView: View {
       HStack {
         Button(action: onChangeUser)
         {
-          Text("Follow User")
+          Text("Show follower count")
             .font(.caption)
             .fontWeight(.semibold)
         }

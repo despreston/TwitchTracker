@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Promises
 
 struct BaseRequest {
   private let CLIENT_ID: String = "dr354rjm9tq8zayf4ccoyj8kdbwrn3"
@@ -14,13 +15,9 @@ struct BaseRequest {
   private let session: URLSession
   
   var url: URL
-  var callback: (_ error: Error?, _ data: Data?) -> Void
   
   @discardableResult
-  init(
-    url: String,
-    callback: @escaping(_ error: Error?, _ data: Data?) -> Void
-  ) {
+  init(url: String) {
     self.url = URL(string: url)!
     self.config = URLSessionConfiguration.default
     
@@ -29,26 +26,22 @@ struct BaseRequest {
     ]
     
     self.session = URLSession(configuration: config)
-    self.callback = callback
-    
-    self.doRequest()
   }
   
-  private func doRequest() {
-    self.session.dataTask(with: self.url) { data, response, error in
-      if (error != nil) {
-        self.callback(error, data)
-        return
-      }
-
-      guard let httpResponse = response as? HTTPURLResponse,
-        (200...299).contains(httpResponse.statusCode) else {
-          self.callback(error, data)
-          return
-      }
-      
-      self.callback(error, data)
-      return
-    }.resume()
+  func doRequest() -> Promise<Data> {
+    return Promise<Data> { fulfill, reject in
+      self.session.dataTask(with: self.url) { data, response, error in
+        if (error != nil) {
+          return reject(error!)
+        }
+        
+        guard let httpResponse = response as? HTTPURLResponse,
+          (200...299).contains(httpResponse.statusCode) else {
+            return reject(error!)
+        }
+        
+        return fulfill(data!)
+      }.resume()
+    }
   }
 }
