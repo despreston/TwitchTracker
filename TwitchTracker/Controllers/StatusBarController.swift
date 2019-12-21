@@ -23,12 +23,9 @@ class StatusBarController
     statusBarButton = statusItem.button!
     self.popover = popover
     
-    statusBarButton.image = #imageLiteral(resourceName: "StatusBarIcon")
-    statusBarButton.image?.size = NSSize(width: 18.0, height: 18.0)
-    statusBarButton.image?.isTemplate = true
-    
     statusBarButton.action = #selector(togglePopover(sender:))
     statusBarButton.target = self
+    statusBarButton.title = "🎮"
     
     eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown], handler: mouseEventHandler)
   }

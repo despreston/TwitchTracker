@@ -18,6 +18,10 @@
 		48DEDFEC23AC0F1300BE574B /* TwitchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DEDFEB23AC0F1300BE574B /* TwitchRequest.swift */; };
 		48DEDFF023AC253900BE574B /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DEDFEF23AC253900BE574B /* BaseRequest.swift */; };
 		48DEDFF523AD668000BE574B /* Promises in Frameworks */ = {isa = PBXBuildFile; productRef = 48DEDFF423AD668000BE574B /* Promises */; };
+		48DEDFF823AD87A400BE574B /* TwitchUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DEDFF723AD87A400BE574B /* TwitchUrl.swift */; };
+		48DEDFFA23AD99A600BE574B /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DEDFF923AD99A600BE574B /* ProfileImage.swift */; };
+		48DEDFFD23AD9A4200BE574B /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 48DEDFFC23AD9A4200BE574B /* KingfisherSwiftUI */; };
+		48DEDFFF23AD9A4200BE574B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 48DEDFFE23AD9A4200BE574B /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +39,8 @@
 		48D1DE8523AC02B500C6FE8D /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		48DEDFEB23AC0F1300BE574B /* TwitchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitchRequest.swift; sourceTree = "<group>"; };
 		48DEDFEF23AC253900BE574B /* BaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequest.swift; sourceTree = "<group>"; };
+		48DEDFF723AD87A400BE574B /* TwitchUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitchUrl.swift; sourceTree = "<group>"; };
+		48DEDFF923AD99A600BE574B /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +48,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48DEDFFF23AD9A4200BE574B /* Kingfisher in Frameworks */,
+				48DEDFFD23AD9A4200BE574B /* KingfisherSwiftUI in Frameworks */,
 				48DEDFF523AD668000BE574B /* Promises in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -68,6 +76,7 @@
 		48866EC623A95C7E00AAD4F1 /* TwitchTracker */ = {
 			isa = PBXGroup;
 			children = (
+				48DEDFF623AD878E00BE574B /* Views */,
 				48DEDFEA23AC0E3B00BE574B /* Utils */,
 				48D1DE8423AC021700C6FE8D /* Controllers */,
 				48866EC723A95C7E00AAD4F1 /* AppDelegate.swift */,
@@ -109,6 +118,15 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		48DEDFF623AD878E00BE574B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				48DEDFF723AD87A400BE574B /* TwitchUrl.swift */,
+				48DEDFF923AD99A600BE574B /* ProfileImage.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -127,6 +145,8 @@
 			name = TwitchTracker;
 			packageProductDependencies = (
 				48DEDFF423AD668000BE574B /* Promises */,
+				48DEDFFC23AD9A4200BE574B /* KingfisherSwiftUI */,
+				48DEDFFE23AD9A4200BE574B /* Kingfisher */,
 			);
 			productName = TwitchTracker;
 			productReference = 48866EC423A95C7E00AAD4F1 /* TwitchTracker.app */;
@@ -158,6 +178,7 @@
 			mainGroup = 48866EBB23A95C7E00AAD4F1;
 			packageReferences = (
 				48DEDFF323AD668000BE574B /* XCRemoteSwiftPackageReference "promises" */,
+				48DEDFFB23AD9A4200BE574B /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 48866EC523A95C7E00AAD4F1 /* Products */;
 			projectDirPath = "";
@@ -186,9 +207,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48DEDFF823AD87A400BE574B /* TwitchUrl.swift in Sources */,
 				48866EDF23ABEAE300AAD4F1 /* StatusBarController.swift in Sources */,
 				48866ECA23A95C7E00AAD4F1 /* ContentView.swift in Sources */,
 				48866EC823A95C7E00AAD4F1 /* AppDelegate.swift in Sources */,
+				48DEDFFA23AD99A600BE574B /* ProfileImage.swift in Sources */,
 				48DEDFF023AC253900BE574B /* BaseRequest.swift in Sources */,
 				48866EE123ABEB6700AAD4F1 /* EventMonitor.swift in Sources */,
 				48DEDFEC23AC0F1300BE574B /* TwitchRequest.swift in Sources */,
@@ -403,6 +426,14 @@
 				minimumVersion = 1.2.8;
 			};
 		};
+		48DEDFFB23AD9A4200BE574B /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.12.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -410,6 +441,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 48DEDFF323AD668000BE574B /* XCRemoteSwiftPackageReference "promises" */;
 			productName = Promises;
+		};
+		48DEDFFC23AD9A4200BE574B /* KingfisherSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48DEDFFB23AD9A4200BE574B /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = KingfisherSwiftUI;
+		};
+		48DEDFFE23AD9A4200BE574B /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48DEDFFB23AD9A4200BE574B /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
