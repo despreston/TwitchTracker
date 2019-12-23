@@ -7,6 +7,9 @@
 //
 
 import AppKit
+import Cocoa
+
+private var _shared: StatusBarController?
 
 class StatusBarController
 {
@@ -16,18 +19,47 @@ class StatusBarController
   private var statusBarButton: NSStatusBarButton
   private var eventMonitor: EventMonitor?
   
+  static var shared: StatusBarController {
+    return _shared!
+  }
+  
   init(_ popover: NSPopover)
   {
     statusBar = NSStatusBar.init()
-    statusItem = statusBar.statusItem(withLength: 28.0)
+    let variableLength: CGFloat = NSStatusItem.variableLength
+    statusItem = statusBar.statusItem(withLength: variableLength)
     statusBarButton = statusItem.button!
     self.popover = popover
     
     statusBarButton.action = #selector(togglePopover(sender:))
     statusBarButton.target = self
-    statusBarButton.title = "🎮"
     
-    eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown], handler: mouseEventHandler)
+    let icon = NSImage(named: "StatusBarIcon")
+    icon?.isTemplate = true
+    statusBarButton.image = icon
+    statusBarButton.imagePosition = NSControl.ImagePosition.imageLeft;
+    
+    eventMonitor = EventMonitor(
+      mask: [.leftMouseDown, .rightMouseDown], handler: mouseEventHandler
+    )
+    
+    _shared = self
+  }
+  
+  func setFollowerCount(count: Int) -> Void {
+    self.statusBarButton.title = "\(count)"
+    
+    if (popover.isShown) {
+      self.showPopover()
+    }
+  }
+  
+  func showPopover() -> Void {
+    popover.show(
+      relativeTo: statusBarButton.bounds,
+      of: statusBarButton,
+      preferredEdge: .minY
+    )
   }
   
   @objc func togglePopover(sender: AnyObject)
@@ -38,14 +70,9 @@ class StatusBarController
     }
     else
     {
-      showPopover(sender)
+      showPopover()
+      eventMonitor?.start()
     }
-  }
-  
-  func showPopover(_ sender: AnyObject)
-  {
-    popover.show(relativeTo: statusBarButton.bounds, of: statusBarButton, preferredEdge: NSRectEdge.maxY)
-    eventMonitor?.start()
   }
   
   func hidePopover(_ sender: AnyObject)

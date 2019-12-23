@@ -9,6 +9,9 @@
 import SwiftUI
 import AppKit
 import Promises
+import Foundation
+
+private var loop = FollowerLoop.init()
 
 struct ContentView: View {
   @State private var name: String = ""
@@ -17,6 +20,9 @@ struct ContentView: View {
   @State private var error: String = ""
   @State private var followers: Int = 0
   
+  private func setFollowers(_ count: Int) -> Void {
+    self.followers = count
+  }
   
   private func onChangeUser() -> Void {
     self.loading = true
@@ -30,6 +36,15 @@ struct ContentView: View {
       self.followers = followers
       self.name = ""
       self.error = ""
+      
+      StatusBarController.shared.setFollowerCount(count: followers)
+      
+      guard let id = self.user?.id else { return }
+      
+      loop.reset(id) { count in
+        self.followers = count
+        StatusBarController.shared.setFollowerCount(count: count)
+      }
     }.catch { error in
       self.error = {
         switch error {

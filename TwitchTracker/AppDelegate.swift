@@ -24,8 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     popover.contentSize = NSSize(width: 360, height: 360)
     popover.contentViewController?.view = NSHostingView(rootView: contentView)
     
-    // Create the Status Bar Item with the Popover
-    statusBar = StatusBarController.init(popover)
+    statusBar = StatusBarController.init(popover);
   }
 
   func applicationWillTerminate(_ aNotification: Notification) {
