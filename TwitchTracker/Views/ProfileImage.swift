@@ -7,7 +7,6 @@
 //
 
 import KingfisherSwiftUI
-//import Kingfisher
 import SwiftUI
 
 func ProfileImage(url: String) -> some View {

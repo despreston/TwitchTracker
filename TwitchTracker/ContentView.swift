@@ -9,7 +9,6 @@
 import SwiftUI
 import AppKit
 import Promises
-import Foundation
 
 private var loop = FollowerLoop.init()
 
@@ -19,10 +18,6 @@ struct ContentView: View {
   @State private var loading: Bool = false
   @State private var error: String = ""
   @State private var followers: Int = 0
-  
-  private func setFollowers(_ count: Int) -> Void {
-    self.followers = count
-  }
   
   private func onChangeUser() -> Void {
     self.loading = true

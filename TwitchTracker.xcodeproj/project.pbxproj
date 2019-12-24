@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4854FE8D23B11E1400B205F3 /* StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4854FE8C23B11E1400B205F3 /* StatusBar.swift */; };
 		4854FE8F23B14C7200B205F3 /* FollowerLoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4854FE8E23B14C7200B205F3 /* FollowerLoop.swift */; };
 		48866EC823A95C7E00AAD4F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48866EC723A95C7E00AAD4F1 /* AppDelegate.swift */; };
 		48866ECA23A95C7E00AAD4F1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48866EC923A95C7E00AAD4F1 /* ContentView.swift */; };
@@ -27,7 +26,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4854FE8C23B11E1400B205F3 /* StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBar.swift; sourceTree = "<group>"; };
 		4854FE8E23B14C7200B205F3 /* FollowerLoop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerLoop.swift; sourceTree = "<group>"; };
 		48866EC423A95C7E00AAD4F1 /* TwitchTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitchTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48866EC723A95C7E00AAD4F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 				48866ECD23A95C8000AAD4F1 /* Preview Content */,
 				48866EE023ABEB6700AAD4F1 /* EventMonitor.swift */,
 				48D1DE8523AC02B500C6FE8D /* Config.xcconfig */,
-				4854FE8C23B11E1400B205F3 /* StatusBar.swift */,
 			);
 			path = TwitchTracker;
 			sourceTree = "<group>";
@@ -219,7 +216,6 @@
 				4854FE8F23B14C7200B205F3 /* FollowerLoop.swift in Sources */,
 				48866EC823A95C7E00AAD4F1 /* AppDelegate.swift in Sources */,
 				48DEDFFA23AD99A600BE574B /* ProfileImage.swift in Sources */,
-				4854FE8D23B11E1400B205F3 /* StatusBar.swift in Sources */,
 				48DEDFF023AC253900BE574B /* BaseRequest.swift in Sources */,
 				48866EE123ABEB6700AAD4F1 /* EventMonitor.swift in Sources */,
 				48DEDFEC23AC0F1300BE574B /* TwitchRequest.swift in Sources */,
@@ -363,6 +359,7 @@
 				CODE_SIGN_ENTITLEMENTS = TwitchTracker/TwitchTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"TwitchTracker/Preview Content\"";
 				DEVELOPMENT_TEAM = 46UG5SPFHF;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -386,6 +383,7 @@
 				CODE_SIGN_ENTITLEMENTS = TwitchTracker/TwitchTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"TwitchTracker/Preview Content\"";
 				DEVELOPMENT_TEAM = 46UG5SPFHF;
 				ENABLE_HARDENED_RUNTIME = YES;

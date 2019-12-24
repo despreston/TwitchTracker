@@ -30,7 +30,6 @@ enum TwitchRequestError: Error {
 }
 
 class TwitchRequest {
-  private static let CLIENT_ID: String = "dr354rjm9tq8zayf4ccoyj8kdbwrn3"
   private static let BASE_URL: String = "https://api.twitch.tv/helix/"
   
   public static func user(login: String) -> Promise<TwitchUser> {

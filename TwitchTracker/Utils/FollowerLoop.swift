@@ -19,7 +19,7 @@ class FollowerLoop {
     self.timer?.invalidate()
     
     self.timer = Timer.scheduledTimer(
-      timeInterval: 10,
+      timeInterval: 60,
       target: self,
       selector: #selector(shits),
       userInfo: nil,
