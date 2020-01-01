@@ -1,12 +1,45 @@
 <html>
   <head>
     <title>Twitch Tracker</title>
+    <style>
+      body {
+        margin: 1.5em;
+        font-family: monospace;
+        font-size: 1.4em;
+      }
+
+      #content {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      #privacy {
+        margin-top: 3.0em;
+      }
+
+      #screenshot {
+        padding: 1.0em;
+        border-radius: 35px;
+      }
+    </style>
   </head>
   <body>
-    Support for Twitch Tracker is available via email. You can send an email
-    directly to me (the creator) at despreston [at] gmail dot com.
+    <div id="content">
+      <div>
+        <h1><img src="logo.png" /> Twitch Tracker</h1>
+        <h3>Mac OS menu bar app for tracking the follower count of a Twitch.tv user.</h3>
+        <p>
+        Support for Twitch Tracker is available via email. You can send an email
+        directly to me (the author) at despreston [at] gmail dot com.
+        </p>
+        <h4 id="privacy">Privacy Policy</h4>
+        <p>
+        Twitch Tracker collects zero data from the user and none of the data
+        fetched from Twitch is kept in persistent storage.
+        </p>
+      </div>
+      <img id="screenshot" src="screenshot.png" />
+    </div>
 
-    Privacy Policy:
-    Twitch Tracker collects zero data from the user.
   </body>
 </html>
