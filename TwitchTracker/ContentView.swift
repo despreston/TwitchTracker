@@ -20,6 +20,8 @@ struct ContentView: View {
   @State private var followers: Int = 0
   
   private func onChangeUser() -> Void {
+    if (self.name.count == 0) { return }
+    
     self.loading = true
     
     TwitchRequest.user(login: self.name).then { user in
@@ -109,6 +111,7 @@ struct ContentView: View {
             .font(.caption)
             .fontWeight(.semibold)
         }
+        .disabled(self.name.count == 0)
         Button(action: { NSApplication.shared.terminate(self) })
         {
           Text("Quit App")
