@@ -3,43 +3,165 @@
     <title>Twitch Tracker</title>
     <style>
       body {
-        margin: 1.5em;
-        font-family: monospace;
-        font-size: 1.4em;
-      }
-
-      #content {
+        font-size: 1.4rem;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        background-color: #a4508b;
+        background-image: linear-gradient(326deg, #a4508b 0%, #5f0a87 74%);
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
       }
 
-      #privacy {
-        margin-top: 3.0em;
+      .content, a {
+        color: #fff;
+      }
+
+      .content {
+        max-width: 900px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header {
+        font-size: 0.9rem;
+        height: 50px;
+      }
+
+      .main {
+        display: flex;
+        align-items: center;
+        flex: 1;
+      }
+
+      .footer {
+        text-align: center;
+        height: 100px;
+      }
+
+      h4 {
+        font-size: 0.75rem;
+        margin-bottom: 0px;
+      }
+
+      p {
+        font-size: 0.7rem;
       }
 
       #screenshot {
-        padding: 1.0em;
-        border-radius: 35px;
+        width: 400px;
+        height: 305px;
+        border-radius: 25px;
+        box-shadow: 0 25px 50px -12px rgba(0,0,0,.25);
       }
+
+      .app-store-link {
+        height: 48px;
+        width: 150px;
+        box-shadow: 0 25px 50px -12px rgba(0,0,0,.25);
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 20px;
+        font-size: 1rem;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        text-decoration: none;
+        transition: transform .3s cubic-bezier(.175,.885,.32,1.275),
+                    background-color .2s cubic-bezier(.39,.575,.565,1)
+      }
+
+      .app-store-link:hover {
+        transform: scale(1.1);
+        background-color: rgba(255, 255, 255, 0.7);
+      }
+
+      .app-store-icon {
+        margin-right: 11px;
+      }
+
+      @media only screen and (max-width: 1025px) {
+        .header, .footer {
+          display: none;
+        }
+
+        .main {
+          text-align: center;
+          font-size: 3.5rem;
+        }
+
+        .headline {
+          display: flex;
+          align-items: center;
+        }
+
+        .main, .headline {
+          flex-direction: column;
+          justify-content: center;
+        }
+
+        .app-store-link {
+          justify-content: center;
+          margin-top: 100px;
+          transform: scale(3.0);
+        }
+
+        .app-store-link:hover {
+          transform: scale(3.0);
+        }
+
+        #screenshot {
+          height: unset;
+          width: 100%;
+          margin-top: 200px;
+        }
+      }
+
     </style>
   </head>
   <body>
-    <div id="content">
-      <div>
-        <h1><img src="logo.png" /> Twitch Tracker</h1>
-        <h3>Mac OS menu bar app for tracking the follower count of a Twitch.tv user.</h3>
-        <p>
-        Support for Twitch Tracker is available via email. You can send an email
-        directly to me (the author) at despreston [at] gmail dot com.
-        </p>
-        <h4 id="privacy">Privacy Policy</h4>
+    <div class="content">
+      <h1 class="header">Twitch Tracker</h1>
+      <div class="main">
+        <div class="headline">
+          <h3>
+            Twitch follower and view count in your Mac OS menu bar.
+          </h3>
+          <a
+            class="app-store-link"
+            href="https://apps.apple.com/us/app/twitch-tracker/id1492763716?mt=12"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="25"
+              width="22"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              aria-hidden="true"
+              focusable="false"
+              class="app-store-icon"
+              preserveAspectRatio="xMidYMid meet"
+              viewBox="0 0 512 512"
+            ><path d="M349.13 136.86c-40.32 0-57.36 19.24-85.44 19.24c-28.79
+                                 0-50.75-19.1-85.69-19.1c-34.2 0-70.67 20.88-93.83 56.45c-32.52 50.16-27
+                                 144.63 25.67 225.11c18.84 28.81 44 61.12 77 61.47h.6c28.68 0 37.2-18.78
+                                 76.67-19h.6c38.88 0 46.68 18.89 75.24 18.89h.6c33-.35 59.51-36.15
+                                 78.35-64.85c13.56-20.64 18.6-31
+                              29-54.35c-76.19-28.92-88.43-136.93-13.08-178.34c-23-28.8-55.32-45.48-85.79-45.48z"
+                                                                                                                fill="#fff"/><path d="M340.25 32c-24 1.63-52 16.91-68.4 36.86c-14.88
+                                                                                                                      18.08-27.12 44.9-22.32 70.91h1.92c25.56 0 51.72-15.39 67-35.11c14.72-18.77
+                                                                                                                      25.88-45.37 21.8-72.66z" fill="#fff"/></svg>
+            <span>App Store</span>
+          </a>
+        </div>
+        <img id="screenshot" src="screenshot.png" />
+      </div>
+      <div class="footer">
+        <h4>Privacy Policy</h4>
         <p>
         Twitch Tracker collects zero data from the user and none of the data
         fetched from Twitch is kept in persistent storage.
         </p>
+        <p id="contact">
+        Support via <a href="https://github.com/despreston">Github</a>
+        </p>
       </div>
-      <img id="screenshot" src="screenshot.png" />
     </div>
-
   </body>
 </html>
